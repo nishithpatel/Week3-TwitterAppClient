@@ -47,6 +47,10 @@
             android:name="com.nishithp.week3_twitterappclient.TimelineActivity"
             android:label="@string/title_activity_timeline" >
         </activity>
+        <activity
+            android:name="com.nishithp.week3_twitterappclient.Compose"
+            android:label="@string/title_activity_compose" >
+        </activity>
     </application>
 
 </manifest>
