@@ -8,25 +8,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Compose" >
 
-    <Button
-        android:id="@+id/btnTweet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/btnTweetLabel" 
-        android:onClick="onSubmit"/>
-
     <EditText
         android:id="@+id/etNewTweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btnTweet"
-        android:layout_toLeftOf="@+id/btnTweet"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:ems="10"
-        android:hint="@string/NewTweetHint" >
+        android:hint="@string/NewTweetHint" />
 
-        <requestFocus />
-    </EditText>
+    <Button
+        android:id="@+id/btnTweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etNewTweet"
+        android:layout_toRightOf="@+id/etNewTweet"
+        android:onClick="onSubmit"
+        android:text="@string/btnTweetLabel" />
 
 </RelativeLayout>
