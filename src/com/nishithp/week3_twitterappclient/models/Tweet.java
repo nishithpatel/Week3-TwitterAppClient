@@ -22,7 +22,7 @@ public class Tweet extends BaseModel {
 	}
 	
 	public boolean isFavorited() {
-		return getBoolean("fovorited");
+		return getBoolean("favorited");
 	}
 	
 	public boolean isRetweeted() {
