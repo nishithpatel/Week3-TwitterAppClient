@@ -4,6 +4,7 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,15 +33,32 @@ public class ProfileHeaderFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		MyTwitterApp.getRestClient().getMyInfo(new JsonHttpResponseHandler() {	
-			@Override
-			public void onSuccess(JSONObject json) {
-				User u = User.fromJson(json);
-				getActivity().getActionBar().setTitle("@" + u.getScreenName());
-				populateProfileHeader(u);
-			}
+		
+		int code = getActivity().getIntent().getIntExtra("code", 0);
+		
+		if(code == 12345) {
+			MyTwitterApp.getRestClient().getMyInfo(new JsonHttpResponseHandler() {	
+				@Override
+				public void onSuccess(JSONObject json) {
+					User u = User.fromJson(json);
+					populateProfileHeader(u);
+				}
+				
+			});
+		}
+		
+		if(code == 67890) {
 			
-		});
+			String screenname = "nishith_p";
+			MyTwitterApp.getRestClient().getUserProfile(screenname, new JsonHttpResponseHandler() {	
+				@Override
+				public void onSuccess(JSONObject json) {
+					User u = User.fromJson(json);
+					populateProfileHeader(u);
+				}
+				
+			});
+		}
 	}
 	
 	private void populateProfileHeader(User u) {
@@ -50,6 +68,7 @@ public class ProfileHeaderFragment extends Fragment {
 		TextView tvFollowing = (TextView) getActivity().findViewById(R.id.tvFollowing);;
 		ImageView ivProfileImage = (ImageView) getActivity().findViewById(R.id.ivProfileImage);
 		
+		getActivity().getActionBar().setTitle("@" + u.getScreenName());
 		tvName.setText(u.getName());
 		tvTagline.setText(u.getTagline());
 		tvFollowers.setText("Followers: " + u.getFollowersCount());

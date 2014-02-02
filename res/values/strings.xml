@@ -11,5 +11,6 @@
     <string name="NewTweetHint">Compose new tweet ...</string>
     <string name="btnTweetLabel">Tweet</string>
     <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_lookup_user_profile">LookupUserProfileActivity</string>
 
 </resources>

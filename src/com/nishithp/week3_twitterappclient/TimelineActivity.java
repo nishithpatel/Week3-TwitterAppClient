@@ -4,29 +4,26 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.app.ActionBar.TabListener;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nishithp.week3_twitterappclient.fragments.HomeTimelineFragment;
 import com.nishithp.week3_twitterappclient.fragments.MentionsFragment;
 import com.nishithp.week3_twitterappclient.fragments.TweetsListFragment;
 import com.nishithp.week3_twitterappclient.models.Tweet;
-
-import android.os.Bundle;
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
-import android.app.ActionBar.TabListener;
-import android.app.Activity;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ListView;
-import android.widget.Toast;
 
 public class TimelineActivity extends FragmentActivity implements TabListener {
 	
@@ -39,6 +36,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_timeline);
 		setupNavigationTabs();
+		
 	}
 	
 	private void setupNavigationTabs() {
@@ -61,7 +59,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	
 	public void onCompose(MenuItem mi) {
 	     // handle click from menu item
-		Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "Clicked Compose", Toast.LENGTH_SHORT).show();
 		Intent i = new Intent(this, Compose.class);
 		i.putExtra("mode", 2);
 		startActivityForResult(i, REQUEST_CODE);
@@ -116,7 +114,17 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	} 
 	
 	public void onProfileView(MenuItem mi) {
+		Toast.makeText(this, "Clicked Profile", Toast.LENGTH_SHORT).show();
 		Intent i = new Intent(this, ProfileActivity.class);
+		i.putExtra("code", 12345);
+		startActivity(i);
+	}
+	
+	public void lookupUser(View v) {
+		
+		Toast.makeText(this, "Clicked image", Toast.LENGTH_SHORT).show();
+		Intent i = new Intent(this, ProfileActivity.class);
+		i.putExtra("code", 67890);
 		startActivity(i);
 	}
 

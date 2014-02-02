@@ -55,6 +55,7 @@
             android:name="com.nishithp.week3_twitterappclient.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
+        
     </application>
 
 </manifest>

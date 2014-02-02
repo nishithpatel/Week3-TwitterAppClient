@@ -37,6 +37,7 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
 		String formattedName = "<b>" + tweet.getUser().getName() + "</b>" + "<small><font color='#777777'>@" + 
 				tweet.getUser().getScreenName() + "</font></small>";
 		nameView.setText(Html.fromHtml(formattedName));
+		imageView.setTag(tweet.getUser().getScreenName());
 		
 		TextView bodyView = (TextView) view.findViewById(R.id.tvBody);	
 		bodyView.setText(Html.fromHtml(tweet.getBody()));
