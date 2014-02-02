@@ -1,23 +1,15 @@
 package com.nishithp.week3_twitterappclient;
 
-import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.nishithp.week3_twitterappclient.models.Tweet;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Toast;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class Compose extends Activity {
 	

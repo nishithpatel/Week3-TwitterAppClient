@@ -4,14 +4,12 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.activeandroid.util.Log;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nishithp.week3_twitterappclient.MyTwitterApp;
 import com.nishithp.week3_twitterappclient.R;
@@ -49,7 +47,7 @@ public class ProfileHeaderFragment extends Fragment {
 		
 		if(code == 67890) {
 			
-			String screenname = "nishith_p";
+			String screenname = getActivity().getIntent().getStringExtra("screenname");
 			MyTwitterApp.getRestClient().getUserProfile(screenname, new JsonHttpResponseHandler() {	
 				@Override
 				public void onSuccess(JSONObject json) {

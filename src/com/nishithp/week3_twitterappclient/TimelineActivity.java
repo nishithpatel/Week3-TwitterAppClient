@@ -1,9 +1,5 @@
 package com.nishithp.week3_twitterappclient;
 
-import java.util.ArrayList;
-
-import org.json.JSONArray;
-
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
@@ -15,15 +11,10 @@ import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nishithp.week3_twitterappclient.fragments.HomeTimelineFragment;
 import com.nishithp.week3_twitterappclient.fragments.MentionsFragment;
 import com.nishithp.week3_twitterappclient.fragments.TweetsListFragment;
-import com.nishithp.week3_twitterappclient.models.Tweet;
 
 public class TimelineActivity extends FragmentActivity implements TabListener {
 	
@@ -59,7 +50,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	
 	public void onCompose(MenuItem mi) {
 	     // handle click from menu item
-		Toast.makeText(this, "Clicked Compose", Toast.LENGTH_SHORT).show();
+		//Toast.makeText(this, "Clicked Compose", Toast.LENGTH_SHORT).show();
 		Intent i = new Intent(this, Compose.class);
 		i.putExtra("mode", 2);
 		startActivityForResult(i, REQUEST_CODE);
@@ -71,18 +62,9 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	  // REQUEST_CODE is defined above
 	  if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
-		  
-		  MyTwitterApp.getRestClient().getHomeTimeline(new JsonHttpResponseHandler() {
-				public void onSuccess(JSONArray jsonTweets) {
-					ArrayList<Tweet> tweets = Tweet.fromJson(jsonTweets);
-					TweetsAdapter adapter = new TweetsAdapter(getBaseContext(), tweets);
-					
-					ListView lvTweets = (ListView) findViewById(R.id.lvTweets);
-					lvTweets.setAdapter(adapter);
-					
-					//Log.d("DEBUG", jsonTweets.toString());
-				}
-			});
+		  Intent refresh = new Intent(this, TimelineActivity.class);
+	      startActivity(refresh);
+	      this.finish();
 	  }
 	}
 
@@ -114,17 +96,18 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	} 
 	
 	public void onProfileView(MenuItem mi) {
-		Toast.makeText(this, "Clicked Profile", Toast.LENGTH_SHORT).show();
+		//Toast.makeText(this, "Clicked Profile", Toast.LENGTH_SHORT).show();
 		Intent i = new Intent(this, ProfileActivity.class);
 		i.putExtra("code", 12345);
 		startActivity(i);
 	}
 	
 	public void lookupUser(View v) {
-		
-		Toast.makeText(this, "Clicked image", Toast.LENGTH_SHORT).show();
+		String screenname = v.getTag().toString();
+		//Toast.makeText(this, "Clicked image. " + screenname, Toast.LENGTH_SHORT).show();
 		Intent i = new Intent(this, ProfileActivity.class);
 		i.putExtra("code", 67890);
+		i.putExtra("screenname", screenname);
 		startActivity(i);
 	}
 

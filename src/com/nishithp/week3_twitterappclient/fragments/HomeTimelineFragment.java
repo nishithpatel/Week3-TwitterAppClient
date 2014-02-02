@@ -1,7 +1,5 @@
 package com.nishithp.week3_twitterappclient.fragments;
 
-import java.util.ArrayList;
-
 import org.json.JSONArray;
 
 import android.os.Bundle;

@@ -4,12 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nishithp.week3_twitterappclient.MyTwitterApp;
-import com.nishithp.week3_twitterappclient.R;
-import com.nishithp.week3_twitterappclient.TweetsAdapter;
 import com.nishithp.week3_twitterappclient.models.Tweet;
 import com.nishithp.week3_twitterappclient.models.User;
 
@@ -40,7 +37,7 @@ public class UserTimelineFragment extends TweetsListFragment {
 		
 		if(code == 67890) {
 			
-			String screenname = "nishith_p";
+			String screenname = getActivity().getIntent().getStringExtra("screenname");
 			MyTwitterApp.getRestClient().getUserTimeline(screenname, new JsonHttpResponseHandler() {
 				public void onSuccess(JSONArray jsonTweets) {
 					getAdapter().addAll(Tweet.fromJson(jsonTweets));

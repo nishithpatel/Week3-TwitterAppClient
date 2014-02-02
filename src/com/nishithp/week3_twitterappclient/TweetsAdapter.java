@@ -2,18 +2,17 @@ package com.nishithp.week3_twitterappclient;
 
 import java.util.List;
 
-import com.nishithp.week3_twitterappclient.models.Tweet;
-import com.nostra13.universalimageloader.core.ImageLoader;
-
 import android.content.Context;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.nishithp.week3_twitterappclient.models.Tweet;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class TweetsAdapter extends ArrayAdapter<Tweet> {
 	
