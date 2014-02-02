@@ -51,9 +51,9 @@ public class ProfileHeaderFragment extends Fragment {
 		ImageView ivProfileImage = (ImageView) getActivity().findViewById(R.id.ivProfileImage);
 		
 		tvName.setText(u.getName());
-		tvTagline.setText(u.getName());
-		tvFollowers.setText(u.getFollowersCount() + "Followers");
-		tvFollowing.setText(u.getFriendsCount() + "Following");
+		tvTagline.setText(u.getTagline());
+		tvFollowers.setText("Followers: " + u.getFollowersCount());
+		tvFollowing.setText("Following: " + u.getFriendsCount());
 		
 		//load profile image
 		ImageLoader.getInstance().displayImage(u.getProfileImageUrl(), ivProfileImage);
