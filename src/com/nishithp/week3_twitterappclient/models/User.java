@@ -24,6 +24,10 @@ public class User extends BaseModel{
 		return getString("profile_background_image_url");
 	}
 	
+	public String getTagline() {
+		return getString("description");
+	}
+	
 	public int getNumTweets() {
 		return getInt("statuses_count");
 	}
